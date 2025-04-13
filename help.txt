@@ -1,0 +1,9 @@
+to run:
+
+SERVER:
+npm start
+
+
+CLIENT
+npm install
+num run dev
