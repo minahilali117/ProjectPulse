@@ -20,7 +20,7 @@ const linkData = [
     icon: <MdDashboard />,
   },
   {
-    label: "Tasks",
+    label: "Projects",
     link: "tasks",
     icon: <FaTasks />,
   },
@@ -86,14 +86,13 @@ const Sidebar = () => {
 
   return (
     <div className='w-full h-full flex flex-col gap-6 p-5'>
-      <h1 className='flex gap-1 items-center'>
-        <p className='bg-blue-600 p-2 rounded-full'>
-          <MdOutlineAddTask className='text-white text-2xl font-black' />
-        </p>
-        <span className='text-2xl font-bold text-black dark:text-white'>
-          TaskMe
-        </span>
-      </h1>
+      <h1 className='flex gap-2 items-center'>
+      <img src='/4.png' alt='ProjectPulse Logo' className='h-20 w-20 object-contain' />
+      <span className='text-2xl font-bold text-black dark:text-white'>
+        ProjectPulse
+      </span>
+    </h1>
+
 
       <div className='flex-1 flex flex-col gap-y-5 py-8'>
         {sidebarLinks.map((link) => (

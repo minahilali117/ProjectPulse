@@ -145,7 +145,7 @@ const AddTask = ({ open, setOpen, task }) => {
               placeholder='Task title'
               type='text'
               name='title'
-              label='Task Title'
+              label='Project Title'
               className='w-full rounded'
               register={register("title", {
                 required: "Title is required!",
@@ -155,7 +155,7 @@ const AddTask = ({ open, setOpen, task }) => {
             <UserList setTeam={setTeam} team={team} />
             <div className='flex gap-4'>
               <SelectList
-                label='Task Stage'
+                label='Project Stage'
                 lists={LISTS}
                 selected={stage}
                 setSelected={setStage}
@@ -173,7 +173,7 @@ const AddTask = ({ open, setOpen, task }) => {
                   placeholder='Date'
                   type='date'
                   name='date'
-                  label='Task Date'
+                  label='Project Date'
                   className='w-full rounded'
                   register={register("date", {
                     required: "Date is required!",
@@ -201,7 +201,7 @@ const AddTask = ({ open, setOpen, task }) => {
             </div>
 
             <div className='w-full'>
-              <p>Task Description</p>
+              <p>Project Description</p>
               <textarea
                 name='description'
                 {...register("description")}
