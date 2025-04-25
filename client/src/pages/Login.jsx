@@ -111,6 +111,12 @@ const Login = () => {
           </form>
         </div>
       </div>
+      {/* Group Members Info */}
+      <div className="absolute bottom-2 right-4 text-xs text-gray-500 dark:text-gray-400 opacity-75">
+        <p>Minahil Ali 22i-0849</p>
+        <p>Tauha Imran 22i-1239</p>
+        <p>Nabeed Haider 22i-0871</p>
+      </div>
     </div>
   );
 };
