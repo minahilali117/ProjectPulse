@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='flex justify-between items-center bg-white dark:bg-[#1f1f1f] px-4 py-3 2xl:py-4 sticky z-10 top-0'>
+    <div className='flex justify-between items-center bg-white dark:bg-[#1f1f1f] px-4 py-3 2xl:py-4 sticky z-10 top-0 bg-gray-900 text-gray-200'>
       <div className='flex gap-4'>
         <div className=''>
           <button

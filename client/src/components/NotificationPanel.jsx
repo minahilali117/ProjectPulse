@@ -13,10 +13,10 @@ import ViewNotification from "./ViewNotification";
 
 const ICONS = {
   alert: (
-    <HiBellAlert className='h-5 w-5 text-gray-600 group-hover:text-indigo-600' />
+    <HiBellAlert className="h-6 w-6 text-gray-300 group-hover:text-white transition-colors duration-200" />
   ),
   message: (
-    <BiSolidMessageRounded className='h-5 w-5 text-gray-600 group-hover:text-indigo-600' />
+    <BiSolidMessageRounded className="h-5 w-5 text-gray-300 group-hover:text-white" />
   ),
 };
 
@@ -53,8 +53,8 @@ export default function NotificationPanel() {
     <>
       <Popover className='relative'>
         <Popover.Button className='inline-flex items-center outline-none'>
-          <div className='w-8 h-8 flex items-center justify-center text-gray-800 dark:text-white  relative'>
-            <IoIosNotificationsOutline className='text-2xl' />
+          <div className='w-8 h-8 flex items-center justify-center relative'>
+            <IoIosNotificationsOutline className="text-2xl text-gray-400 hover:text-white transition-colors duration-200 dark:text-gray-200" />
             {data?.length > 0 && (
               <span className='absolute text-center top-0 right-1 text-sm text-white font-semibold w-4 h-4 rounded-full bg-red-600'>
                 {data?.length}

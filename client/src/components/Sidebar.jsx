@@ -74,36 +74,37 @@ const Sidebar = () => {
         onClick={closeSidebar}
         to={el.link}
         className={clsx(
-          "w-fult lg:w-3/4 flex gap-2 px-3 py-2 rounded-full items-center text-gray-800 dark:text-gray-400 text-base hover:bg-[#2564ed2d]",
-          path === el.link.split("/")[0] ? "bg-blue-700 text-white" : ""
+           "w-full lg:w-3/4 flex items-center gap-3 px-4 py-2 rounded-md transition-all duration-200 text-gray-300 hover:bg-gray-700 hover:text-white",
+        path === el.link.split("/")[0] ? "bg-gray-700 text-white" : "text-gray-400"
         )}
       >
         {el.icon}
-        <span className='hover:text-[#2564ed]'>{el.label}</span>
+        {/* <span className='hover:text-gray-900 dark:hover:text-white'>{el.label}</span> */}
+        <span className="text-sm font-medium">{el.label}</span>
       </Link>
-    );
+    );  
   };
 
   return (
-    <div className='w-full h-full flex flex-col gap-6 p-5'>
-      <h1 className='flex gap-2 items-center'>
-      <img src='/4.png' alt='ProjectPulse Logo' className='h-20 w-20 object-contain' />
-      <span className='text-2xl font-bold text-black dark:text-white'>
+    <div className="w-full h-full flex flex-col gap-6 p-6 bg-gray-900 text-gray-200">
+      <div className="flex items-center gap-3">
+      <img src='/5.png' alt='ProjectPulse Logo' className='h-20 w-20 object-contain' />
+      <span className='text-2xl font-bold text-White dark:text-white'>
         ProjectPulse
       </span>
-    </h1>
+    </div>
 
 
-      <div className='flex-1 flex flex-col gap-y-5 py-8'>
+    <div className="flex-1 flex flex-col gap-4 pt-8">
         {sidebarLinks.map((link) => (
           <NavLink el={link} key={link.label} />
         ))}
       </div>
 
       <div className=''>
-        <button className='w-full flex gap-2 p-2 items-center text-lg text-gray-800 dark:text-white'>
-          <MdSettings />
-          <span>Settings</span>
+      <button className="w-full flex items-center gap-3 p-2 rounded-md text-gray-400 hover:bg-gray-700 hover:text-white transition-all duration-200">
+          <MdSettings className="text-lg" />
+          <span className="text-sm font-medium">Settings</span>
         </button>
       </div>
     </div>
