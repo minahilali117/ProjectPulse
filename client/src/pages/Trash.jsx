@@ -116,7 +116,7 @@ const Trash = () => {
   const TableHeader = () => (
     <thead className='border-b border-gray-300 dark:border-gray-600'>
       <tr className='text-black dark:text-white  text-left'>
-        <th className='py-2'>Task Title</th>
+        <th className='py-2'>Project Title</th>
         <th className='py-2'>Priority</th>
         <th className='py-2'>Stage</th>
         <th className='py-2 line-clamp-1'>Modified On</th>
@@ -170,7 +170,7 @@ const Trash = () => {
     <>
       <div className='w-full md:px-1 px-0 mb-6'>
         <div className='flex items-center justify-between mb-8'>
-          <Title title='Trashed Tasks' />
+          <Title title='Trashed Projects' />
 
           {data?.tasks?.length > 0 && (
             <div className='flex gap-2 md:gap-4 items-center'>

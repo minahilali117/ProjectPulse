@@ -55,21 +55,21 @@ const Dashboard = () => {
   const stats = [
     {
       _id: "1",
-      label: "TOTAL TASK",
+      label: "TOTAL PROJECT",
       total: data?.totalTasks || 0,
       icon: <FaNewspaper />,
       bg: "bg-[#1d4ed8]",
     },
     {
       _id: "2",
-      label: "COMPLTED TASK",
+      label: "COMPLTED PROJECT",
       total: totals["completed"] || 0,
       icon: <MdAdminPanelSettings />,
       bg: "bg-[#0f766e]",
     },
     {
       _id: "3",
-      label: "TASK IN PROGRESS ",
+      label: "PROJECT IN PROGRESS ",
       total: totals["in progress"] || 0,
       icon: <LuClipboardEdit />,
       bg: "bg-[#f59e0b]",
@@ -174,7 +174,7 @@ const TaskTable = ({ tasks }) => {
   const TableHeader = () => (
     <thead className='border-b border-gray-300 dark:border-gray-600'>
       <tr className='text-black dark:text-white  text-left'>
-        <th className='py-2'>Task Title</th>
+        <th className='py-2'>Project Title</th>
         <th className='py-2'>Priority</th>
         <th className='py-2'>Team</th>
         <th className='py-2 hidden md:block'>Created At</th>

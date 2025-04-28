@@ -58,7 +58,7 @@ const Table = ({ tasks }) => {
   const TableHeader = () => (
     <thead className='w-full border-b border-gray-300 dark:border-gray-600'>
       <tr className='w-full text-black dark:text-white  text-left'>
-        <th className='py-2'>Task Title</th>
+        <th className='py-2'>Project Title</th>
         <th className='py-2'>Priority</th>
         <th className='py-2 line-clamp-1'>Created At</th>
         <th className='py-2'>Assets</th>

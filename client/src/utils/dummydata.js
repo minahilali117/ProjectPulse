@@ -217,7 +217,7 @@ export const tasks = [
   },
   {
     _id: "7",
-    title: "Tsk Manager Project",
+    title: "Task Manager Project",
     priority: "high",
     stage: "completed",
     date: new Date("2023-02-10").toISOString(),
