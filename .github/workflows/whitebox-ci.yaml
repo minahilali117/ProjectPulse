@@ -29,6 +29,14 @@ jobs:
       working-directory: ./server
       run: npm start &
 
+    - name: Install Frontend Dependencies
+      working-directory: ./client
+      run: npm install
+
+    - name: Start Frontend (React) in Background
+      working-directory: ./client
+      run: npm start &
+
     - name: Test raw curl output
       run: |
         curl -i http://localhost:8800 || true
@@ -42,10 +50,14 @@ jobs:
           sleep 3
         done
 
-    - name: Run Whitebox API Tests
+    - name: Wait for Frontend to be Ready (Port 3000)
+      run: |
+        for i in {1..10}; do
+          echo "⌛ Checking if frontend is up..."
+          curl -s -f http://localhost:3000 && break
+          echo "🔁 Frontend not ready yet, retrying in 3s..."
+          sleep 3
+        done
+
+    - name: Run Whitebox API and Frontend Tests
       run: bash tests/whitebox.sh
-
-
-
-
-
