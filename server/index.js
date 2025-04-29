@@ -35,3 +35,4 @@ app.use(routeNotFound);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`Server listening on ${port}`));
+export default index;
