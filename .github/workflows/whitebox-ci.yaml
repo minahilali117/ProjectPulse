@@ -21,36 +21,22 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install Client Dependencies
-      working-directory: ./client
-      run: npm install
-
     - name: Install Server Dependencies
       working-directory: ./server
       run: npm install
-
-    - name: Start Client (Vite) in Background
-      working-directory: ./client
-      run: npm run dev &
 
     - name: Start Backend (Express) in Background
       working-directory: ./server
       run: npm start &
 
-    - name: Wait for Backend to be Ready
+    - name: Wait for Backend to be Ready (Port 8800)
       run: |
         for i in {1..10}; do
           echo "⌛ Checking if backend is up..."
-          curl -s -f http://localhost:5000/api/users && break
+          curl -s -f http://localhost:8800/api/users && break
           echo "🔁 Backend not ready yet, retrying in 3s..."
           sleep 3
         done
-        
-    - name: Test raw curl output
-      run: |
-        curl -i http://localhost:3000/api/users || true
 
     - name: Run Whitebox API Tests
       run: bash tests/whitebox.sh
-
-

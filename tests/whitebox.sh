@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE=http://localhost:5000
+BASE=http://localhost:8800
 
 test_endpoint() {
   local path=$1
