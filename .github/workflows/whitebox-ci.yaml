@@ -31,8 +31,7 @@ jobs:
 
     - name: Run Curl White Box Tests
       run: |
-        echo "Testing GET /api/users endpoint"
-        curl -f http://localhost:5000/api/users || exit 1
+        curl -f http://localhost:5000/api/users
+        curl -f http://localhost:5000/api/projects
+        curl -f http://localhost:5000/api/tasks
 
-        echo "Testing GET /api/tasks endpoint"
-        curl -f http://localhost:5000/api/tasks || exit 1
