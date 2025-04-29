@@ -29,14 +29,23 @@ jobs:
       working-directory: ./server
       run: npm start &
 
+    - name: Test raw curl output
+      run: |
+        curl -i http://localhost:8800 || true
+
     - name: Wait for Backend to be Ready (Port 8800)
       run: |
         for i in {1..10}; do
           echo "⌛ Checking if backend is up..."
-          curl -s -f http://localhost:8800/api/users && break
+          curl -s -f http://localhost:8800 && break
           echo "🔁 Backend not ready yet, retrying in 3s..."
           sleep 3
         done
 
     - name: Run Whitebox API Tests
       run: bash tests/whitebox.sh
+
+
+
+
+
