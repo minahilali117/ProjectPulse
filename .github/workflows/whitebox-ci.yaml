@@ -1,0 +1,38 @@
+name: White Box Test CI
+
+on:
+  push:
+    branches:
+      - workflow-TESTING-BRANCH
+  pull_request:
+    branches:
+      - workflow-TESTING-BRANCH
+
+jobs:
+  whitebox-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Start the App (Background)
+      run: |
+        npm start &
+        sleep 10  # Give server time to boot
+
+    - name: Run Curl White Box Tests
+      run: |
+        echo "Testing GET /api/users endpoint"
+        curl -f http://localhost:5000/api/users || exit 1
+
+        echo "Testing GET /api/tasks endpoint"
+        curl -f http://localhost:5000/api/tasks || exit 1
