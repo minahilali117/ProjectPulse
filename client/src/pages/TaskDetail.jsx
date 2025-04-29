@@ -226,9 +226,10 @@ const TaskDetail = () => {
   };
 
   if (isLoading)
-    <div className='py-10'>
-      <Loading />
-    </div>;
+    return (
+      <div className='py-10'>
+        <Loading />
+      </div>);
 
   const percentageCompleted =
     task?.subTasks?.length === 0
@@ -312,13 +313,12 @@ const TaskDetail = () => {
                         SUB-TASKS
                       </p>
                       <div
-                        className={`w-fit h-8 px-2 rounded-full flex items-center justify-center text-white ${
-                          percentageCompleted < 50
+                        className={`w-fit h-8 px-2 rounded-full flex items-center justify-center text-white ${percentageCompleted < 50
                             ? "bg-rose-600"
                             : percentageCompleted < 80
-                            ? "bg-amber-600"
-                            : "bg-emerald-600"
-                        }`}
+                              ? "bg-amber-600"
+                              : "bg-emerald-600"
+                          }`}
                       >
                         <p>{percentageCompleted.toFixed(2)}%</p>
                       </div>
@@ -341,11 +341,10 @@ const TaskDetail = () => {
                               </span>
 
                               <span
-                                className={`px-2 py-0.5 text-center text-sm rounded-full font-semibold ${
-                                  el?.isCompleted
+                                className={`px-2 py-0.5 text-center text-sm rounded-full font-semibold ${el?.isCompleted
                                     ? "bg-emerald-100 text-emerald-700"
                                     : "bg-amber-50 text-amber-600"
-                                }`}
+                                  }`}
                               >
                                 {el?.isCompleted ? "done" : "in progress"}
                               </span>
@@ -355,11 +354,10 @@ const TaskDetail = () => {
                             <>
                               <button
                                 disabled={isSubmitting}
-                                className={`text-sm outline-none bg-gray-100 text-gray-800 p-1 rounded ${
-                                  el?.isCompleted
+                                className={`text-sm outline-none bg-gray-100 text-gray-800 p-1 rounded ${el?.isCompleted
                                     ? "hover:bg-rose-100 hover:text-rose-800"
                                     : "hover:bg-emerald-100 hover:text-emerald-800"
-                                } disabled:cursor-not-allowed`}
+                                  } disabled:cursor-not-allowed`}
                                 onClick={() =>
                                   handleSubmitAction({
                                     status: el?.isCompleted,

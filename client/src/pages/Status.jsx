@@ -6,10 +6,13 @@ import { Loading, Title } from "../components";
 const StatusPage = () => {
   const { data, isLoading } = useGetUserTaskStatusQuery();
 
-  if (isLoading)
-    <div className='py-10'>
-      <Loading />
-    </div>;
+  if (isLoading) {
+    return (
+      <div className='py-10'>
+        <Loading />
+      </div>
+    );
+  }
 
   const TableHeader = () => (
     <thead className='border-b border-gray-300 dark:border-gray-600'>
