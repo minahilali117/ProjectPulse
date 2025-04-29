@@ -21,17 +21,20 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Install Dependencies
+    - name: Install Client Dependencies
+      working-directory: ./client
       run: npm install
+  
+    - name: Start Client 
+      working-directory: ./client
+      run: npm run dev &
+        sleep 10
 
-    - name: Start the App (Background)
+    - name: Start Server
+      working-directory: ./server
       run: |
         npm start &
-        sleep 10  # Give server time to boot
+        sleep 10
 
-    - name: Run Curl White Box Tests
-      run: |
-        curl -f http://localhost:5000/api/users
-        curl -f http://localhost:5000/api/projects
-        curl -f http://localhost:5000/api/tasks
-
+    - name: Run Whitebox Tests
+      run: bash tests/whitebox.sh
