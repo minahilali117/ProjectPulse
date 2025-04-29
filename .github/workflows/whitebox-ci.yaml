@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v3
 
     - name: Set up Node.js
@@ -29,26 +29,28 @@ jobs:
       working-directory: ./server
       run: npm install
 
-    - name: Start Frontend (Vite) in Background
+    - name: Start Client (Vite) in Background
       working-directory: ./client
       run: npm run dev &
 
-    - name: Start Backend in Background
+    - name: Start Backend (Express) in Background
       working-directory: ./server
       run: npm start &
 
     - name: Wait for Backend to be Ready
       run: |
         for i in {1..10}; do
-          echo "Checking if backend is up..."
+          echo "⌛ Checking if backend is up..."
           curl -s -f http://localhost:5000/api/users && break
-          echo "Backend not ready. Retrying in 3s..."
+          echo "🔁 Backend not ready yet, retrying in 3s..."
           sleep 3
         done
-
+        
     - name: Test raw curl output
       run: |
-        curl -i http://localhost:5000/api/users || true
+        curl -i http://localhost:3000/api/users || true
 
-    - name: Run Whitebox Tests
+    - name: Run Whitebox API Tests
       run: bash tests/whitebox.sh
+
+

@@ -2,13 +2,25 @@
 
 BASE=http://localhost:5000
 
-echo "🧪 Checking /api/users"
-curl -s -f "$BASE/api/users" || { echo "❌ /api/users failed"; exit 1; }
+test_endpoint() {
+  local path=$1
+  echo "🧪 Checking $BASE$path"
+  
+  response=$(curl -s -w "\n%{http_code}" "$BASE$path")
+  body=$(echo "$response" | head -n -1)
+  status=$(echo "$response" | tail -n1)
 
-echo "🧪 Checking /api/projects"
-curl -s -f "$BASE/api/projects" || { echo "❌ /api/projects failed"; exit 1; }
+  if [[ "$status" -ge 200 && "$status" -lt 300 ]]; then
+    echo "✅ $path responded with $status"
+  else
+    echo "❌ $path failed with status $status"
+    echo "Response body: $body"
+    exit 1
+  fi
+}
 
-echo "🧪 Checking /api/tasks"
-curl -s -f "$BASE/api/tasks" || { echo "❌ /api/tasks failed"; exit 1; }
+test_endpoint "/api/users"
+test_endpoint "/api/projects"
+test_endpoint "/api/tasks"
 
-echo "✅ All whitebox tests passed."
+echo "✅ All whitebox API tests passed."
