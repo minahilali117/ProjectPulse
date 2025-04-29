@@ -24,17 +24,27 @@ jobs:
     - name: Install Client Dependencies
       working-directory: ./client
       run: npm install
-  
-    - name: Start Client 
+
+    - name: Install Server Dependencies
+      working-directory: ./server
+      run: npm install
+
+    - name: Start Frontend (Vite) in Background
       working-directory: ./client
       run: npm run dev &
-        sleep 10
 
-    - name: Start Server
+    - name: Start Backend in Background
       working-directory: ./server
+      run: npm start &
+
+    - name: Wait for Backend to be Ready
       run: |
-        npm start &
-        sleep 10
+        for i in {1..10}; do
+          echo "Checking if backend is up..."
+          curl -s -f http://localhost:5000/api/users && break
+          echo "Backend not ready. Retrying in 3s..."
+          sleep 3
+        done
 
     - name: Run Whitebox Tests
       run: bash tests/whitebox.sh
