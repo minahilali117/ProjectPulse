@@ -46,5 +46,9 @@ jobs:
           sleep 3
         done
 
+    - name: Test raw curl output
+      run: |
+        curl -i http://localhost:5000/api/users || true
+
     - name: Run Whitebox Tests
       run: bash tests/whitebox.sh
